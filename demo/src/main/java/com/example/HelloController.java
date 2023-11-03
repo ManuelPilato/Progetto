@@ -1,4 +1,4 @@
-package com.example.demo;
+package demo.src.main.java.com.example;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;

@@ -21,4 +21,5 @@ public class HelloApplication extends Application {
         launch();
     }
     System.out.println("Ue, ho contribuito!");
+    System.out.println("Ue, ho contribuito di nuovo!");
 }

@@ -22,4 +22,5 @@ public class HelloApplication extends Application {
     }
     System.out.println("Ue, ho contribuito!");
     System.out.println("Ue, ho contribuito di nuovo!");
+    System.out.println("Ciao raga");
 }

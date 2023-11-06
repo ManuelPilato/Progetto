@@ -1,15 +1,29 @@
 package demo.src.main.java.com.example;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.nio.file.FileSystemLoopException;
 import java.time.LocalDate;
 
 public class HelloController {
+    public Text welcomeTag;
+    @FXML
+    private TextField loginUserField;
+
+    @FXML
+    private TextField loginPasswordField;
+
+    @FXML
+    private Text loginError;
 
     @FXML
     private TextField nome;
@@ -28,6 +42,30 @@ public class HelloController {
 
     @FXML
     private Text errore;
+
+    @FXML
+    void login(MouseEvent event){
+        //questi dati verranno verificati a partire dal db delle registrazioni
+        String regUser = "User";
+        String regPassword = "Password";
+
+        if(loginUserField.getText().compareTo(regUser)==0 && loginPasswordField.getText().compareTo(regPassword)==0){
+            System.out.println("Utente Registrato");
+        }
+        else{
+            loginError.setText("Credenziali errate");
+        }
+    }
+
+    @FXML
+    void openRegistration(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../../resources/com/example/demo/hello-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setTitle("Benvenuto!");
+        stage.setScene(scene);
+        stage.show();
+    }
 
     @FXML
     void registrati(MouseEvent event) {
@@ -68,6 +106,5 @@ public class HelloController {
     public static boolean isAlpha(String s) {
         return s != null && s.matches("^[a-zA-Z]*$");
     }
-
 }
 

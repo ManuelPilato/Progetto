@@ -11,14 +11,24 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.nio.file.FileSystemLoopException;
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class HelloController {
     public Text welcomeTag;
 
     @FXML
     private Button publicAreaRedirectButton;
+
+    @FXML
+    private Button privateAreaRedirectButton;
+
+    @FXML
+    private Button loginButton;
+
+    @FXML
+    private Button backButton;
 
     @FXML
     private TextField loginUserField;
@@ -47,28 +57,85 @@ public class HelloController {
     @FXML
     private Text errore;
 
+    private PageHistory pageHistory = new PageHistory();
+
+    @FXML
+    void back(MouseEvent event) throws IOException {
+        String latestPage = pageHistory.getLatest();
+        redirectToPage(event, (Stage) backButton.getScene().getWindow(), "../../../resources/com/example/demo/starting-page-private.fxml");
+        pageHistory.pop();
+    }
+
     @FXML
     void redirectToPublicArea(MouseEvent event) throws IOException {
         Stage stage = (Stage) publicAreaRedirectButton.getScene().getWindow();
-        //Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../../resources/com/example/demo/starting-page-citizen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../../resources/com/example/demo/starting-page-public.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Benvenuto!");
+        stage.setTitle("Area Pubblica");
         stage.setScene(scene);
         stage.show();
     }
 
     @FXML
-    void loginPublicArea(MouseEvent event){
+    void redirectToPrivateArea(MouseEvent event) throws IOException {
+        Stage stage = (Stage) privateAreaRedirectButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../../resources/com/example/demo/starting-page-private.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Area Privata");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void redirectToPage(MouseEvent event, Stage parentStage, String fxmlLoaderTarget) throws IOException {
+        Stage stage = parentStage;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlLoaderTarget));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void loginPublicArea(MouseEvent event) throws IOException {
+        //questi dati verranno verificati a partire dal db delle registrazioni
+        String regUser = "User";
+        String regPassword = "Password";
+        String fxmlLoadTarget = "../../../resources/com/example/demo/public-area-home.fxml";
+        Stage currentStage = (Stage) loginButton.getScene().getWindow();
+
+        pageHistory.setCurrentStage(currentStage);
+        pageHistory.push(fxmlLoadTarget);
+        System.out.println("I added ");
+        pageHistory.printList();
+        System.out.println("but from outside");
+
+        if(loginUserField.getText().compareTo(regUser)==0 && loginPasswordField.getText().compareTo(regPassword)==0)
+            redirectToPage(event, currentStage, fxmlLoadTarget);
+        else{
+            loginError.setText("Credenziali errate!");
+        }
+    }
+
+    @FXML
+    void loginPrivateArea(MouseEvent event) throws IOException {
         //questi dati verranno verificati a partire dal db delle registrazioni
         String regUser = "User";
         String regPassword = "Password";
 
-        if(loginUserField.getText().compareTo(regUser)==0 && loginPasswordField.getText().compareTo(regPassword)==0){
-            System.out.println("Utente Registrato");
-        }
+        String fxmlLoadTarget = "../../../resources/com/example/demo/private-area-home.fxml";
+
+        Stage currentStage = (Stage) loginButton.getScene().getWindow();
+
+        pageHistory.setCurrentStage(currentStage);
+        pageHistory.push(fxmlLoadTarget);
+        System.out.println("I added ");
+        pageHistory.printList();
+        System.out.println("but from outside");
+
+        if(loginUserField.getText().compareTo(regUser)==0 && loginPasswordField.getText().compareTo(regPassword)==0)
+            redirectToPage(event, currentStage, fxmlLoadTarget);
         else{
-            loginError.setText("Credenziali errate");
+            loginError.setText("Credenziali errate!");
         }
     }
 

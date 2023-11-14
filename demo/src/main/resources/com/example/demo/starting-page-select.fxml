@@ -32,7 +32,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="privateAreaRedirectButton" layoutX="327.0" layoutY="273.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="174.0" text="Area Riservata">
+      <Button fx:id="privateAreaRedirectButton" layoutX="327.0" layoutY="273.0" mnemonicParsing="false" onMouseClicked="#redirectToPrivateArea" prefHeight="48.0" prefWidth="174.0" text="Area Riservata">
          <font>
             <Font size="18.0" />
          </font>

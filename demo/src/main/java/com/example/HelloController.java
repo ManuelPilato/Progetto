@@ -14,7 +14,7 @@ import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.*;
 
-public class HelloController implements Initializable {
+public class HelloController{
 
     private PageHistory pageHistory = new PageHistory();
 
@@ -41,12 +41,6 @@ public class HelloController implements Initializable {
 
     @FXML
     private Text loginError;
-
-    @FXML
-    private ChoiceBox<String> loginLocationChoiceBox;
-
-    @FXML
-    private String[] localita = {"Venezia", "Verona", "Padova"};
 
     @FXML
     private TextField nome;
@@ -196,10 +190,5 @@ public class HelloController implements Initializable {
         return s != null && s.matches("^[a-zA-Z]*$");
     }
 
-    @Override
-    //TODO: risolvere perchè non va il chiocebox
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        //loginLocationChoiceBox.getItems().addAll(localita);
-    }
 }
 

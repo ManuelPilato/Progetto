@@ -37,7 +37,7 @@
          </font>
       </Text>
       <PasswordField fx:id="loginPasswordField" layoutX="167.0" layoutY="247.0" prefHeight="22.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="loginLocationChoice" layoutX="167.0" layoutY="121.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="loginLocationChoiceBox" layoutX="167.0" layoutY="121.0" prefWidth="150.0" />
       <Text fx:id="loginError" layoutX="174.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="135.5511474609375">
          <font>
             <Font size="12.0" />

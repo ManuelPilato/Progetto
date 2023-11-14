@@ -5,17 +5,26 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 public class HelloController {
+
+    private PageHistory pageHistory = new PageHistory();
+
+    private String currentFXML;
+
+    @FXML
     public Text welcomeTag;
 
     @FXML
@@ -57,13 +66,11 @@ public class HelloController {
     @FXML
     private Text errore;
 
-    private PageHistory pageHistory = new PageHistory();
-
     @FXML
     void back(MouseEvent event) throws IOException {
-        String latestPage = pageHistory.getLatest();
-        redirectToPage(event, (Stage) backButton.getScene().getWindow(), "../../../resources/com/example/demo/starting-page-private.fxml");
         pageHistory.pop();
+        System.out.println(pageHistory.getLatest());
+        redirectToPage(event, (Stage) backButton.getScene().getWindow(), pageHistory.getLatest());
     }
 
     @FXML
@@ -78,12 +85,13 @@ public class HelloController {
 
     @FXML
     void redirectToPrivateArea(MouseEvent event) throws IOException {
-        Stage stage = (Stage) privateAreaRedirectButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../../resources/com/example/demo/starting-page-private.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Area Privata");
-        stage.setScene(scene);
-        stage.show();
+        String fxmlLoadTarget = "../../../resources/com/example/demo/starting-page-private.fxml";
+        Stage currentStage = (Stage) privateAreaRedirectButton.getScene().getWindow();
+        pageHistory.setCurrentStage(currentStage);
+
+        //inserisco nella cronologia il nome del file fxml corrente
+        pageHistory.push(fxmlLoadTarget);
+        redirectToPage(event, currentStage, fxmlLoadTarget);
     }
 
     @FXML
@@ -121,19 +129,18 @@ public class HelloController {
         //questi dati verranno verificati a partire dal db delle registrazioni
         String regUser = "User";
         String regPassword = "Password";
-
         String fxmlLoadTarget = "../../../resources/com/example/demo/private-area-home.fxml";
-
         Stage currentStage = (Stage) loginButton.getScene().getWindow();
 
         pageHistory.setCurrentStage(currentStage);
-        pageHistory.push(fxmlLoadTarget);
         System.out.println("I added ");
         pageHistory.printList();
         System.out.println("but from outside");
 
-        if(loginUserField.getText().compareTo(regUser)==0 && loginPasswordField.getText().compareTo(regPassword)==0)
+        if(loginUserField.getText().compareTo(regUser)==0 && loginPasswordField.getText().compareTo(regPassword)==0) {
+            pageHistory.push(fxmlLoadTarget);
             redirectToPage(event, currentStage, fxmlLoadTarget);
+        }
         else{
             loginError.setText("Credenziali errate!");
         }

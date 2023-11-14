@@ -16,6 +16,10 @@ import java.time.LocalDate;
 
 public class HelloController {
     public Text welcomeTag;
+
+    @FXML
+    private Button publicAreaRedirectButton;
+
     @FXML
     private TextField loginUserField;
 
@@ -44,7 +48,18 @@ public class HelloController {
     private Text errore;
 
     @FXML
-    void login(MouseEvent event){
+    void redirectToPublicArea(MouseEvent event) throws IOException {
+        Stage stage = (Stage) publicAreaRedirectButton.getScene().getWindow();
+        //Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../../resources/com/example/demo/starting-page-citizen.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Benvenuto!");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void loginPublicArea(MouseEvent event){
         //questi dati verranno verificati a partire dal db delle registrazioni
         String regUser = "User";
         String regPassword = "Password";
@@ -58,10 +73,10 @@ public class HelloController {
     }
 
     @FXML
-    void openRegistration(MouseEvent event) throws IOException {
+    void openRegistrationPublicArea(MouseEvent event) throws IOException {
+        Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../../resources/com/example/demo/hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        Stage stage = new Stage();
         stage.setTitle("Benvenuto!");
         stage.setScene(scene);
         stage.show();

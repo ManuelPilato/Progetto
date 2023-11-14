@@ -9,11 +9,11 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
 
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../../resources/com/example/demo/starting-page.fxml"));
+    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../../resources/com/example/demo/starting-page-select.fxml"));
 
     @Override
     public void start(Stage stage) throws IOException {
-        //FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../../resources/com/example/demo/starting-page.fxml"));
+        //FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../../resources/com/example/demo/starting-page-select.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Benvenuto!");
         stage.setScene(scene);

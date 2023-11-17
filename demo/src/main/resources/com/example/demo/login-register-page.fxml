@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.LoginController">
+   <children>
+      <Separator fx:id="hoizontalSep" layoutY="55.0" prefHeight="12.0" prefWidth="604.0" />
+      <Text fx:id="loginTag" layoutX="112.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accedi" wrappingWidth="76.10934829711914">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="loginDescriptionTag" layoutX="43.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Se ti sei già registrato, accedi usando le tue credenziali" textAlignment="CENTER" wrappingWidth="213.10934829711914">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="43.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codice fiscale" wrappingWidth="128.10934829711914">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="cod_fisc_field" layoutX="44.0" layoutY="193.0" prefHeight="25.0" prefWidth="215.0" promptText="PLTMNL02C22G273N" />
+      <Text layoutX="43.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="128.10934829711914">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <PasswordField fx:id="password_field" layoutX="44.0" layoutY="249.0" prefHeight="25.0" prefWidth="215.0" promptText="password" />
+      <Separator fx:id="verticalSep" layoutX="300.0" layoutY="60.0" orientation="VERTICAL" prefHeight="340.0" prefWidth="5.0" />
+      <Text fx:id="registrationTag" layoutX="399.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrati" wrappingWidth="102.70938491821289">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="registrationDescriptionTag" layoutX="328.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Se è la prima volta che usufruisci del nostro servizio, registrati premendo il tasto in basso per ottenere le tue credenziali di accesso." textAlignment="CENTER" wrappingWidth="243.10934829711914">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Button fx:id="registrationButton" layoutX="385.0" layoutY="315.0" mnemonicParsing="false" onMouseClicked="#registration" prefHeight="20.0" prefWidth="130.0" text="Registrati">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button fx:id="loginButton" layoutX="85.0" layoutY="315.0" mnemonicParsing="false" onMouseClicked="#login" prefHeight="20.0" prefWidth="130.0" text="Accedi">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Text fx:id="error" fill="RED" layoutX="55.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="189.10934829711914">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="goBack" layoutX="19.0" layoutY="46.0" onMouseClicked="#goBack" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;--" wrappingWidth="53.10934829711914">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

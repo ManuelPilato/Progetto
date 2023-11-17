@@ -1,4 +1,4 @@
-package demo.src.main.java.com.example;
+package com.example.demo;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;

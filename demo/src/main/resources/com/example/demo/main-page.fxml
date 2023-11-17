@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.MainController">
+   <children>
+      <Button fx:id="prenotazioneButton" layoutX="264.0" layoutY="316.0" mnemonicParsing="false" onMouseClicked="#prenota" text="Prenotazione">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="logoutButton" layoutX="609.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#log_out" text="Log out">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Text layoutX="39.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleziona un'operazione:">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="operazione" layoutX="452.0" layoutY="109.0" prefWidth="180.0" />
+      <Text layoutX="45.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nota: Il ritiro del passaporto avviene almeno un mese dopo la prenotazione" wrappingWidth="609.81396484375">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Separator layoutY="56.0" prefWidth="700.0" />
+      <Text layoutX="39.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleziona una sede di ritiro:">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text fx:id="goBack" layoutX="12.0" layoutY="43.0" onMouseClicked="#goBack" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;--" wrappingWidth="53.10934829711914">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="ritiro" layoutX="452.0" layoutY="175.0" prefWidth="180.0" />
+   </children>
+</AnchorPane>
